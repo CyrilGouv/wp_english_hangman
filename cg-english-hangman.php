@@ -80,6 +80,7 @@ class CgEnglishHangman {
     }
 
     public function output() {
+        ob_start();
         ?>
         <div id="cg-english-hangman" class="cg-english-hangman" data-url="<?= get_rest_url( null, 'ceh/v1/words' ) ?>">
             <h1 class="ceh-title">Hangman</h1>
@@ -129,6 +130,7 @@ class CgEnglishHangman {
             </div>
         </div>
         <?php
+        return ob_get_clean();
     }
 }
 

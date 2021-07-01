@@ -101,6 +101,10 @@
     font-size: 16px;
 }
 
+.cg-english-hangman .popup #final-message {
+    color: white;
+}
+
 .cg-english-hangman .popup button:active {
     transform: scale(0.98);
 }

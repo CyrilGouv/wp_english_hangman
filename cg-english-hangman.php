@@ -115,11 +115,7 @@ class CgEnglishHangman {
                     </div>
                 </div>
 
-                <div class="word" id="word">
-                    <div class="letter">A</div>
-                    <div class="letter">B</div>
-                    <div class="letter">C</div>
-                </div>
+                <div class="word" id="word"></div>
             </div>
 
             <!-- Container final message-->

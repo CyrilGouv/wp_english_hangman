@@ -1,15 +1,21 @@
 class cgEnglishHangman {
     constructor() {
-        this.parentEl     = document.getElementById('cg-english-hangman')
-        this.wrongLetters = document.getElementById('wrong-letters')
-        this.word         = document.getElementById('word')
-        this.popup        = document.getElementById('popup')
-        this.notification = document.getElementById('notification-container')
-        this.bodyParts    = document.querySelectorAll('.figure-part')
+        this.parentEl      = document.getElementById('cg-english-hangman')
+        this.wrongLetters  = document.getElementById('wrong-letters')
+        this.word          = document.getElementById('word')
+        this.popup         = document.getElementById('popup-container')
+        this.notification  = document.getElementById('notification-container')
+        this.message  = document.getElementById('final-message')
+        this.bodyParts     = document.querySelectorAll('.figure-part')
 
-        this.restUrl  = this.parentEl.dataset.url
+        this.restUrl       = this.parentEl.dataset.url
+
+        this.targetWord = ''
+        this.correctLetter = []
+        this.wrongLetter   = []
 
         this.getWords()
+        
     }
 
     getWords() {
@@ -20,9 +26,9 @@ class cgEnglishHangman {
         .then(res => {
             const words = res
 
-            const word = this.selectRandomWord(words)
+            this.targetWord = this.selectRandomWord(words)
 
-            console.log(word)
+            this.displayWord()
         })
         .catch(err => console.log(err))
     }
@@ -31,6 +37,21 @@ class cgEnglishHangman {
         const randomWord = words[Math.floor(Math.random() * words.length)].title
 
         return randomWord
+    }
+
+    displayWord() {
+        this.word.innerHTML = `
+            ${this.targetWord.toLowerCase().split('').map(letter => `       
+                <span class="letter">${this.correctLetter.includes(letter) ? letter : ''}</span>
+            `).join('')}
+        `
+
+        const innerWord = this.word.innerText.replace(/\n/g, '')
+
+        if (innerWord === this.targetWord) {
+            this.message.innerText = 'WOW! You won! 😀'
+            this.popup.style.display = 'flex'
+        }
     }
 }
 

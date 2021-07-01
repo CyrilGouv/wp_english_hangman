@@ -29,7 +29,7 @@ class CgEnglishHangman {
 
     public function load_assets() {
         wp_enqueue_style( 'cg-english-hangman', plugin_dir_url( __FILE__ ) . '/css/cg-english-hangman.css' );
-        wp_enqueue_script( 'cg-english-hangman', plugin_dir_url( __FILE__ ) . '/js/cg-english-hangman.js' );
+        wp_enqueue_script( 'cg-english-hangman', plugin_dir_url( __FILE__ ) . '/js/cg-english-hangman.js', [], '1.0.0', true );
     }
 
     public function words_custom_post_type() {
@@ -81,7 +81,7 @@ class CgEnglishHangman {
 
     public function output() {
         ?>
-        <div class="cg-english-hangman">
+        <div id="cg-english-hangman" class="cg-english-hangman" data-url="<?= get_rest_url( null, 'ceh/v1/words' ) ?>">
             <h1 class="ceh-title">Hangman</h1>
             <p>Find the hidden word - Enter a letter</p>
 

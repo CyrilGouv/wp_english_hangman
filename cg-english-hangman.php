@@ -109,10 +109,7 @@ class CgEnglishHangman {
                 </svg>
 
                 <div class="wrong-letters-container">
-                    <div id="wrong-letters">
-                        <p>Wrong</p>
-                        <span>W, K, T</span>
-                    </div>
+                    <div id="wrong-letters"></div>
                 </div>
 
                 <div class="word" id="word"></div>
